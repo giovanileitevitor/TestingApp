@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -40,6 +41,11 @@ fun UsuarioItem(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
+            .clip(CircleShape)
+            .clickable {
+                Toast.makeText(context, "Usuário: $nome - $position", Toast.LENGTH_SHORT).show()
+            }
+
     ) {
         val (txtNome, foto, msg, line) = createRefs()
 
@@ -59,7 +65,7 @@ fun UsuarioItem(
 
         TextButton(
             onClick = {
-                Toast.makeText(context, "Usuário: $nome", Toast.LENGTH_SHORT).show()
+
             },
             colors = ButtonDefaults.buttonColors(
                 contentColor = Color.Black,
