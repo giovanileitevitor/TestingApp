@@ -76,12 +76,6 @@ fun Home(){
             val context = LocalContext.current
 
             CustomCard(
-                text = "Agenda (using Room DB)"
-            ) {
-                context.startActivity(Intent(context, AgendaActivity::class.java))
-            }
-
-            CustomCard(
                 text = "Calculadora de IMC"
             ) {
                 context.startActivity(Intent(context, CalculaImcActivity::class.java))
@@ -103,6 +97,12 @@ fun Home(){
                 text = "Reuso de componentes"
             ) {
                 context.startActivity(Intent(context, ReusingComponentActivity::class.java))
+            }
+
+            CustomCard(
+                text = "Agenda (using Room DB) - under development"
+            ) {
+                context.startActivity(Intent(context, AgendaActivity::class.java))
             }
 
         }
