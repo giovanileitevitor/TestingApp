@@ -31,6 +31,7 @@ import br.applabbs.testingapp.ui.theme.examples.calcimc.CalculaImcActivity
 import br.applabbs.testingapp.ui.theme.examples.chat.ChatActivity
 import br.applabbs.testingapp.ui.theme.examples.notes.NotesActivity
 import br.applabbs.testingapp.ui.theme.examples.reusecomps.ReusingComponentActivity
+import br.applabbs.testingapp.ui.theme.parts.CustomCard
 
 
 class MainActivity: ComponentActivity() {
@@ -47,8 +48,6 @@ class MainActivity: ComponentActivity() {
 
 @Composable
 fun Home(){
-
-    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -73,90 +72,39 @@ fun Home(){
             .fillMaxSize()
             .padding(paddingValues = paddingValues)
         ) {
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-                    .height(50.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = OrangeYellow1,
-                    contentColor = Color.White
-                ),
 
-                onClick = {
-                        context.startActivity(Intent(context, AgendaActivity::class.java))
-                }
-            ){
-                Text(text = "Agenda (using Room DB) ")
+            val context = LocalContext.current
+
+            CustomCard(
+                text = "Agenda (using Room DB)"
+            ) {
+                context.startActivity(Intent(context, AgendaActivity::class.java))
             }
 
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-                    .height(50.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = OrangeYellow1,
-                    contentColor = Color.White
-                ),
-
-                onClick = {
-                    context.startActivity(Intent(context, CalculaImcActivity::class.java))
-                }
-            ){
-                Text(text = "Calculadora de IMC ")
+            CustomCard(
+                text = "Calculadora de IMC"
+            ) {
+                context.startActivity(Intent(context, CalculaImcActivity::class.java))
             }
 
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-                    .height(50.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = OrangeYellow1,
-                    contentColor = Color.White
-                ),
-
-                onClick = {
-                    context.startActivity(Intent(context, ChatActivity::class.java))
-                }
-            ){
-                Text(text = "Chat (Lista)")
+            CustomCard(
+                text = "Chat (Lista)"
+            ) {
+                context.startActivity(Intent(context, ChatActivity::class.java))
             }
 
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-                    .height(50.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = OrangeYellow1,
-                    contentColor = Color.White
-                ),
-
-                onClick = {
-                    context.startActivity(Intent(context, NotesActivity::class.java))
-                }
-            ){
-                Text(text = "Bloco de Notas (with DataStore)")
+            CustomCard(
+                text = "Bloco de Notas (with DataStore)"
+            ) {
+                context.startActivity(Intent(context, NotesActivity::class.java))
             }
 
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-                    .height(50.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = OrangeYellow1,
-                    contentColor = Color.White
-                ),
-
-                onClick = {
-                    context.startActivity(Intent(context, ReusingComponentActivity::class.java))
-                }
-            ){
-                Text(text = "Reuso de componentes")
+            CustomCard(
+                text = "Reuso de componentes"
+            ) {
+                context.startActivity(Intent(context, ReusingComponentActivity::class.java))
             }
+
         }
     }
 
