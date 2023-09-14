@@ -75,6 +75,13 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
+    //Room
+    implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.room:room-ktx:2.5.2")
+
+    //navigation
+    implementation("androidx.navigation:navigation-compose:2.7.2")
+
     implementation("androidx.work:work-runtime-ktx:2.8.1")
     implementation("io.coil-kt:coil-compose:2.4.0")
 }

@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.LocalAbsoluteElevation
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material3.Scaffold
@@ -49,10 +48,10 @@ fun Chat(){
     }
 }
 
-
 @Composable
 fun ListUsuarios(context: Context, paddingValues: PaddingValues){
     val listaUsuarios: MutableList<Usuario> = mutableListOf(
+        Usuario(nome = "Joao Jose Jesus", foto = R.drawable.city),
         Usuario(nome = "Joao Jose Jesus", foto = R.drawable.city),
         Usuario(nome = "Joao Jose Jesus", foto = R.drawable.city),
         Usuario(nome = "Joao Jose Jesus", foto = R.drawable.city),
