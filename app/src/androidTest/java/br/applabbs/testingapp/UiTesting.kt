@@ -8,7 +8,6 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import br.applabbs.testingapp.ui.theme.TestingAppTheme
 import br.applabbs.testingapp.ui.theme.examples.reusecomps.CustomButton
 import org.junit.Before
 import org.junit.Rule
@@ -24,9 +23,7 @@ class UiComposeTest {
     @Before
     fun setup(){
         composeTestRule.setContent {
-            TestingAppTheme {
                 CustomButton(text = "Compartilhar", modifier = Modifier.fillMaxWidth().testTag("BtnCompartilhar")) {
-                }
             }
         }
     }
