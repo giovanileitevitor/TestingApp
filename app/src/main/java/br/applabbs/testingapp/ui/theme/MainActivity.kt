@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Scaffold
@@ -31,6 +33,7 @@ import br.applabbs.testingapp.ui.theme.examples.calcimc.CalculaImcActivity
 import br.applabbs.testingapp.ui.theme.examples.chat.ChatActivity
 import br.applabbs.testingapp.ui.theme.examples.notes.NotesActivity
 import br.applabbs.testingapp.ui.theme.examples.reusecomps.ReusingComponentActivity
+import br.applabbs.testingapp.ui.theme.examples.windows.WindowsActivity
 import br.applabbs.testingapp.ui.theme.parts.CustomCard
 
 
@@ -49,6 +52,8 @@ class MainActivity: ComponentActivity() {
 @Composable
 fun Home(){
 
+    val context = LocalContext.current
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -56,7 +61,7 @@ fun Home(){
                     Text(
                         text = "Collections of codes using Compose",
                         textAlign = TextAlign.Justify,
-                        color = Color.White,
+                        color = Color.Black,
                         maxLines = 1
                     )
                 },
@@ -68,41 +73,34 @@ fun Home(){
             )
         }
     ){ paddingValues ->
+
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(paddingValues = paddingValues)
         ) {
 
-            val context = LocalContext.current
-
-            CustomCard(
-                text = "Calculadora de IMC"
-            ) {
+            CustomCard(text = "Calculadora de IMC") {
                 context.startActivity(Intent(context, CalculaImcActivity::class.java))
             }
 
-            CustomCard(
-                text = "Chat (Lista)"
-            ) {
+            CustomCard(text = "Chat (Lista)") {
                 context.startActivity(Intent(context, ChatActivity::class.java))
             }
 
-            CustomCard(
-                text = "Bloco de Notas (with DataStore)"
-            ) {
+            CustomCard(text = "Bloco de Notas (with DataStore)") {
                 context.startActivity(Intent(context, NotesActivity::class.java))
             }
 
-            CustomCard(
-                text = "Reuso de componentes"
-            ) {
+            CustomCard(text = "Reuso de componentes") {
                 context.startActivity(Intent(context, ReusingComponentActivity::class.java))
             }
 
-            CustomCard(
-                text = "Agenda (using Room DB) - under development"
-            ) {
+            CustomCard(text = "Agenda (using Room DB) - under development") {
                 context.startActivity(Intent(context, AgendaActivity::class.java))
+            }
+
+            CustomCard(text = "Menu tipo Windows - under development") {
+                context.startActivity(Intent(context, WindowsActivity::class.java))
             }
 
         }
@@ -115,4 +113,9 @@ fun Home(){
 fun PreviewHome(){
     Home()
 }
+
+data class Element(
+    val title: String,
+    val className: Intent
+)
 

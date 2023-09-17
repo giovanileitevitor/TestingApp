@@ -25,9 +25,9 @@ val Beige3 = Color(0xfff9a27b)
 val LightGreen1 = Color(0xff54e1b6)
 val LightGreen2 = Color(0xff36ddab)
 val LightGreen3 = Color(0xff11d79b)
-val BlueViolet1 = Color(0xffaeb4fd)
-val BlueViolet2 = Color(0xff9fa5fe)
-val BlueViolet3 = Color(0xff8f98fd)
+val Blue1 = Color(0xffaeb4fd)
+val Blue2 = Color(0xff9fa5fe)
+
 
 val Gold = Color(0xffffD700)
 val Black = Color(0xff000000)

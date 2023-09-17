@@ -73,6 +73,14 @@
 
         </activity>
 
+        <activity
+            android:name=".ui.theme.examples.windows.WindowsActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.TestingApp">
+
+        </activity>
+
     </application>
 
 </manifest>

@@ -29,13 +29,12 @@ import br.applabbs.testingapp.R
 
 @Composable
 fun UsuarioItem(
-    users: MutableList<Usuario>,
-    position: Int,
+    user: Usuario,
     context: Context
 ){
 
-    val nome = users[position].nome ?: ""
-    val fotoUser = users[position].foto ?: R.drawable.city
+    val nome = user.nome ?: ""
+    val fotoUser = user.foto ?: R.drawable.city
 
     ConstraintLayout(
         modifier = Modifier
@@ -43,7 +42,7 @@ fun UsuarioItem(
             .background(Color.White)
             .clip(CircleShape)
             .clickable {
-                Toast.makeText(context, "Usuário: $nome - $position", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Usuário: $nome", Toast.LENGTH_SHORT).show()
             }
 
     ) {
@@ -115,8 +114,7 @@ fun UsuarioItem(
 @Composable
 fun PreviewUsuarioItem(){
     UsuarioItem(
-        users = fakeUsers(),
-        position = 1,
+        user = fakeUser(),
         context = LocalContext.current
     )
 }

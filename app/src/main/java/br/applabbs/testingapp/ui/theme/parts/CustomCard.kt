@@ -4,6 +4,7 @@ import android.icu.text.SimpleDateFormat
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -13,11 +14,13 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.applabbs.testingapp.ui.theme.OrangeYellow1
+import br.applabbs.testingapp.ui.theme.OrangeYellow2
 import java.util.*
 
 
@@ -31,10 +34,17 @@ fun CustomCard(text: String, onClick: () -> Unit){
             .padding(8.dp, 4.dp, 8.dp, 4.dp)
             .clickable(enabled = true, onClick = onClick),
         content = {
-            Box(modifier = Modifier
+            Row(modifier = Modifier
                 .fillMaxWidth()
                 .height(28.dp)
-                .background(OrangeYellow1)) {
+                .background(
+                    brush = Brush.horizontalGradient(
+                        colors = listOf(OrangeYellow2, OrangeYellow1),
+                        startX = 100f,
+                        endX = 200f
+                    )
+                )
+            ) {
 
                 val date = SimpleDateFormat("dd-MM-yyyy'")
                 val currentDateAndTime = date.format(Date())
