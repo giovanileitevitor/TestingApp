@@ -38,6 +38,7 @@ class CitizenActivity: ComponentActivity() {
 
 @Composable
 fun AppCitizen(){
+    val activity = LocalContext.current as ComponentActivity
     val context = LocalContext.current
     val viewModel : CitizenViewModel = viewModel()
     //val count by viewModel.count.collectAsState()
@@ -64,9 +65,7 @@ fun AppCitizen(){
                 modifier = Modifier
                     .size(42.dp)
                     .clickable {
-                        Toast
-                            .makeText(context, "botao menu", Toast.LENGTH_SHORT)
-                            .show()
+                        activity.finish()
                     }
             )
 

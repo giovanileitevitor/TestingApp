@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Scaffold
@@ -29,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -51,6 +53,7 @@ class CalculaImcActivity: ComponentActivity() {
 @Composable
 fun CalculadoraImc(){
 
+    val activity = LocalContext.current as ComponentActivity
     val localContext = LocalContext.current
     val calcularImc = CalcularImc()
     var peso by remember { mutableStateOf("")}
@@ -63,6 +66,7 @@ fun CalculadoraImc(){
                 title = {
                     Text(
                         text = "Calculadora de IMC",
+                        fontSize = 22.sp,
                         color = Color.White
                     )
                 },
@@ -78,6 +82,18 @@ fun CalculadoraImc(){
                         Image(
                             imageVector = ImageVector.vectorResource(id = R.drawable.ic_reload),
                             contentDescription = "refresh"
+                        )
+                    }
+                },
+                navigationIcon = {
+                    IconButton(
+                        onClick = {
+                            activity.finish()
+                        }
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_back),
+                            contentDescription = "Voltar"
                         )
                     }
                 }

@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material3.Scaffold
@@ -15,8 +17,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import br.applabbs.testingapp.R
 
 class AgendaActivity: ComponentActivity() {
 
@@ -33,6 +37,8 @@ class AgendaActivity: ComponentActivity() {
 @Composable
 fun Agenda(){
 
+    val activity = LocalContext.current as ComponentActivity
+
     val localContext = LocalContext.current
 
     Scaffold(
@@ -42,7 +48,19 @@ fun Agenda(){
                 title = {
                     Text(text = "Agenda with Room DB")
                 },
-                contentColor = Color.White
+                contentColor = Color.White,
+                navigationIcon = {
+                    IconButton(
+                        onClick = {
+                            activity.finish()
+                        }
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_back),
+                            contentDescription = "Voltar"
+                        )
+                    }
+                }
             )
         }
     ) { paddingValues ->
