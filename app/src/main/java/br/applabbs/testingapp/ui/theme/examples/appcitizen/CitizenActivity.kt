@@ -1,6 +1,10 @@
 package br.applabbs.testingapp.ui.theme.examples.appcitizen
 
+import android.content.Context
+import android.graphics.drawable.shapes.OvalShape
 import android.os.Bundle
+import android.view.RoundedCorner
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,10 +17,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Text
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -31,15 +40,15 @@ class CitizenActivity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            AppCitizen()
+            AppCitizen(context = this)
         }
     }
 }
 
 @Composable
-fun AppCitizen(){
-    val activity = LocalContext.current as ComponentActivity
-    val context = LocalContext.current
+fun AppCitizen(context: Context){
+    //val activity = LocalContext.current as ComponentActivity
+    //val context = LocalContext.current
     val viewModel : CitizenViewModel = viewModel()
     //val count by viewModel.count.collectAsState()
 
@@ -64,8 +73,9 @@ fun AppCitizen(){
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .size(42.dp)
+                    .clip(CircleShape)
                     .clickable {
-                        activity.finish()
+                        (context as ComponentActivity).finish()
                     }
             )
 
@@ -75,6 +85,7 @@ fun AppCitizen(){
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .size(42.dp)
+                    .clip(CircleShape)
                     .clickable {
                         Toast
                             .makeText(context, "botao search", Toast.LENGTH_SHORT)
@@ -85,8 +96,8 @@ fun AppCitizen(){
     }
 }
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun PreviewCitizen(){
-    AppCitizen()
+    AppCitizen(context = LocalContext.current)
 }

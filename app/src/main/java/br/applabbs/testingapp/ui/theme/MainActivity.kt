@@ -17,18 +17,24 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import br.applabbs.testingapp.ui.theme.examples.agenda.AgendaActivity
+import br.applabbs.testingapp.ui.theme.examples.appcitizen.CitizenActivity
 import br.applabbs.testingapp.ui.theme.examples.calcimc.CalculaImcActivity
 import br.applabbs.testingapp.ui.theme.examples.chat.ChatActivity
 import br.applabbs.testingapp.ui.theme.examples.notes.NotesActivity
@@ -49,27 +55,36 @@ class MainActivity: ComponentActivity() {
 }
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Home(){
 
     val context = LocalContext.current
+    val scrollBehavier = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     Scaffold(
+        modifier = Modifier
+            .nestedScroll(scrollBehavier.nestedScrollConnection),
         topBar = {
             TopAppBar(
                 title = {
                     Text(
                         text = "Collections of codes using Compose",
                         textAlign = TextAlign.Justify,
+                        fontSize = 18.sp,
                         color = Color.Black,
                         maxLines = 1
                     )
                 },
+                scrollBehavior = scrollBehavier,
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentWidth(Alignment.CenterHorizontally)
                     .testTag("toolbar"),
-                backgroundColor = OrangeYellow1
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = OrangeYellow1
+                )
+
             )
         }
     ){ paddingValues ->
@@ -101,6 +116,10 @@ fun Home(){
 
             CustomCard(text = "Menu tipo Windows - under development") {
                 context.startActivity(Intent(context, WindowsActivity::class.java))
+            }
+
+            CustomCard(text = "App Citizen - under development") {
+                context.startActivity(Intent(context, CitizenActivity::class.java))
             }
 
         }
