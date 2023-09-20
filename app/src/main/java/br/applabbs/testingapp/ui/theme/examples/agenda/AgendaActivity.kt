@@ -19,8 +19,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import br.applabbs.testingapp.R
+import br.applabbs.testingapp.ui.theme.examples.agenda.views.ContatoItem
 
 class AgendaActivity: ComponentActivity() {
 
@@ -37,8 +39,7 @@ class AgendaActivity: ComponentActivity() {
 @Composable
 fun Agenda(){
 
-    val activity = LocalContext.current as ComponentActivity
-
+    //val activity = LocalContext.current as ComponentActivity
     val localContext = LocalContext.current
 
     Scaffold(
@@ -52,7 +53,7 @@ fun Agenda(){
                 navigationIcon = {
                     IconButton(
                         onClick = {
-                            activity.finish()
+                            //activity.finish()
                         }
                     ) {
                         Icon(
@@ -64,19 +65,22 @@ fun Agenda(){
             )
         }
     ) { paddingValues ->
-        ListaContatos(context = localContext, paddingValues = paddingValues)
+        ListaContatos(paddingValues = paddingValues, navController = navController)
     }
 }
 
 @Composable
-fun ListaContatos(context: Context, paddingValues: PaddingValues){
-    val listaContatos : MutableList<Contato> = mutableListOf(
-
-    )
+fun ListaContatos(paddingValues: PaddingValues, navController: NavController){
+    val listaContatos : MutableList<Contato> = mutableListOf()
 
     LazyColumn(modifier = Modifier.padding(paddingValues = paddingValues)){
-        itemsIndexed(listaContatos){ position, _ ->
-
+        itemsIndexed(listaContatos){ position, item ->
+            ContatoItem(
+                navController = navController,
+                position = position,
+                listContatos = listaContatos,
+                context = LocalContext.current
+            )
         }
     }
 }
